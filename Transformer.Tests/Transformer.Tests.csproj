@@ -13,8 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DoubleExtension\Transformer.csproj" />
-    <ProjectReference Include="..\Transformer\Transformer.csproj" />
+    <ProjectReference Include="..\Transformer\TransformerExtension.csproj" />
   </ItemGroup>
 
 </Project>

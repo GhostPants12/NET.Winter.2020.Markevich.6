@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transformer", "Transformer\Transformer.csproj", "{DEB93CDB-88A7-478F-9A0B-1C74C0A2DD8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransformerExtension", "Transformer\TransformerExtension.csproj", "{DEB93CDB-88A7-478F-9A0B-1C74C0A2DD8C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transformer.Tests", "Transformer.Tests\Transformer.Tests.csproj", "{CE8F2AB2-39E7-43C2-9B04-EF6D3ED39FEF}"
 EndProject

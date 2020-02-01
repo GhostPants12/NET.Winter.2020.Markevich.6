@@ -1,11 +1,11 @@
 using NUnit.Framework;
-using Transformer;
+using TransformerExtension;
 
-namespace DoubleExtensions.Tests
+namespace TransformerExtension.Tests
 {
     public class Tests
     {
-        TransformerClass transformer = new TransformerClass();
+        Transformer transformer = new Transformer();
         [TestCase(double.NaN, ExpectedResult = "Not a number")]
         [TestCase(double.NegativeInfinity, ExpectedResult = "Negative infinity")]
         [TestCase(double.PositiveInfinity, ExpectedResult = "Positive infinity")]

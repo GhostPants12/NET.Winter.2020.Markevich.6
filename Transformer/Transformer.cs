@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace Transformer
+namespace TransformerExtension
 {
-    public class TransformerClass
+    public class Transformer
     {
         private readonly Dictionary<char, string> characterToWord = new Dictionary<char, string>
         {
@@ -25,6 +25,9 @@ namespace Transformer
             { 'E', "E" },
         };
 
+        /// <summary>Transforms to words.</summary>
+        /// <param name="value">The value.</param>
+        /// <returns>Returns the string representation of a value.</returns>
         public string TransformToWords(double value)
         {
             if (value.ToString(CultureInfo.InvariantCulture) == double.Epsilon.ToString(CultureInfo.InvariantCulture))
@@ -52,20 +55,33 @@ namespace Transformer
                 return "zero";
             }
 
-            string result = string.Empty;
+            int inconsistencyCount;
+            string outString;
+            StringBuilder result = new StringBuilder(string.Empty);
             string valueAsString = value.ToString(CultureInfo.InvariantCulture);
             foreach (char ch in valueAsString)
             {
+                inconsistencyCount = 0;
                 foreach (KeyValuePair<char, string> keyValue in this.characterToWord)
                 {
                     if (ch == keyValue.Key)
                     {
-                        result += keyValue.Value + " ";
+                        result.Append($"{keyValue.Value} ");
                     }
+                    else
+                    {
+                        inconsistencyCount++;
+                    }
+                }
+
+                if (inconsistencyCount == this.characterToWord.Count)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), "Value contains unpredictable symbols.");
                 }
             }
 
-            return result.Substring(0, result.Length - 1);
+            outString = result.ToString();
+            return outString.Substring(0, outString.Length - 1);
         }
     }
 }
