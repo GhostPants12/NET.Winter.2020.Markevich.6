@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransformerExtension", "Tra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transformer.Tests", "Transformer.Tests\Transformer.Tests.csproj", "{CE8F2AB2-39E7-43C2-9B04-EF6D3ED39FEF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolynomialExtension", "PolynomialExtension\PolynomialExtension.csproj", "{10DFD983-80CF-4008-B447-A64EB14F8A21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polynomial.Tests", "Polynomial.Tests\Polynomial.Tests.csproj", "{09572ACB-5536-4F1B-99E4-46CA747BF230}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{CE8F2AB2-39E7-43C2-9B04-EF6D3ED39FEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE8F2AB2-39E7-43C2-9B04-EF6D3ED39FEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE8F2AB2-39E7-43C2-9B04-EF6D3ED39FEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10DFD983-80CF-4008-B447-A64EB14F8A21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10DFD983-80CF-4008-B447-A64EB14F8A21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10DFD983-80CF-4008-B447-A64EB14F8A21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10DFD983-80CF-4008-B447-A64EB14F8A21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09572ACB-5536-4F1B-99E4-46CA747BF230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09572ACB-5536-4F1B-99E4-46CA747BF230}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09572ACB-5536-4F1B-99E4-46CA747BF230}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09572ACB-5536-4F1B-99E4-46CA747BF230}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
