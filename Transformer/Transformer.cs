@@ -7,6 +7,7 @@ namespace TransformerExtension
 {
     public class Transformer
     {
+        /// <summary>Dictionary that contains word match for a character.</summary>
         private readonly Dictionary<char, string> characterToWord = new Dictionary<char, string>
         {
             { '+', "plus" },
@@ -27,6 +28,7 @@ namespace TransformerExtension
 
         /// <summary>Transforms to words.</summary>
         /// <param name="value">The value.</param>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when value contains unpredictable symbols.</exception>
         /// <returns>Returns the string representation of a value.</returns>
         public string TransformToWords(double value)
         {
