@@ -6,15 +6,15 @@ namespace PolynomialExtension.Tests
 {
     public class Tests
     {
-        private Polynomial polynomialOne = new Polynomial(1.5, 5, new double[] { -1.2, 1.3, 1.6, 0, 0, 5 });
-        private Polynomial polynomialTwo = new Polynomial(1.5, 3, new double[] { 1.6, 0, 0, 5 });
-        private Polynomial polynomialThree = new Polynomial(1.5, 5, new double[] { -1.2, 1.3, 1.6, 0, 0, 5 });
+        private Polynomial polynomialOne = new Polynomial( new double[] { -1.2, 1.3, 1.6, 0, 0, 5 });
+        private Polynomial polynomialTwo = new Polynomial( new double[] { 1.6, 0, 0, 5 });
+        private Polynomial polynomialThree = new Polynomial( new double[] { -1.2, 1.3, 1.6, 0, 0, 5 });
         private Polynomial resultPolynomial;
         private Polynomial nullPolynomial = null;
         [Test]
         public void PolynomialAdd_WithAllValidParameters()
         {
-            resultPolynomial = new Polynomial(1.5, 5, new double[] { -2.4, 2.6, 3.2, 0, 0, 10 });
+            resultPolynomial = new Polynomial(new double[] { -2.4, 2.6, 3.2, 0, 0, 10 });
             Assert.AreEqual(true, resultPolynomial == (polynomialOne+polynomialOne));
         }
         [Test]
@@ -32,13 +32,13 @@ namespace PolynomialExtension.Tests
         }
 
         [Test]
-        public void PolynomialSubract_WithAllValidParameters()
+        public void PolynomialSubtract_WithAllValidParameters()
         {
-            resultPolynomial = new Polynomial(1.5, 5, new double[] { 0, 0, 0, 0, 0, 0 });
+            resultPolynomial = new Polynomial( new double[] { 0, 0, 0, 0, 0, 0 });
             Assert.AreEqual(true, resultPolynomial == (polynomialOne - polynomialOne));
         }
         [Test]
-        public void PolynomiaSubtract_WithOneNullParameter()
+        public void PolynomialSubtract_WithOneNullParameter()
         {
             resultPolynomial = polynomialOne;
             Assert.AreEqual(true, resultPolynomial == (polynomialOne - nullPolynomial));
@@ -64,6 +64,11 @@ namespace PolynomialExtension.Tests
         }
 
         [Test]
+        public void EqualsTest_ForTwoEqualPolynomials()
+        {
+            Assert.AreEqual(true, polynomialOne.Equals(polynomialThree));
+        }
+        [Test]
         public void EqualsTest_ViceVersa()
         {
             Assert.AreEqual(polynomialOne.Equals(polynomialTwo), polynomialTwo.Equals(polynomialOne));
@@ -84,7 +89,7 @@ namespace PolynomialExtension.Tests
         [Test]
         public void MultiplyTest_WithAllValidParameters()
         {
-            resultPolynomial = new Polynomial(1.5, 8, new double[]{-1.92, 2.08, 2.5600000000000005, -6, 6.5, 16, 0, 0, 25 });
+            resultPolynomial = new Polynomial(new double[]{-1.92, 2.08, 2.5600000000000005, -6, 6.5, 16, 0, 0, 25 });
             Assert.AreEqual(true, resultPolynomial == polynomialOne * polynomialTwo);
         }
 
