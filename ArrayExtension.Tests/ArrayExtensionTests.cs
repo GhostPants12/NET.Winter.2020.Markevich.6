@@ -38,7 +38,7 @@ namespace ArrayExtension.Tests
         [Test]
         public static void FilterArrayByKey_WithNullArray() => Assert.Throws<ArgumentNullException>(()
               => destination::FilterArray.ArrayFilter.FilterByKey(null, 0));
-        //6 sec
+        //4 sec
         [Test]
         public static void FilterArrayByKey_WithAllValidParameters_BigArray_ForTwoMethods()
         {
