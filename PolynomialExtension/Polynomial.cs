@@ -8,7 +8,7 @@ using System.Text;
 
 namespace PolynomialExtension
 {
-    public class Polynomial : ICloneable, IEquatable<Polynomial>
+    public sealed class Polynomial : ICloneable, IEquatable<Polynomial>
     {
         private readonly int maxPower;
         private readonly double[] multipliersArray;
