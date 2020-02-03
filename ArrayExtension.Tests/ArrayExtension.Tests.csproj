@@ -13,8 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FilterArray.Palindrome\FilterArray.Palindrome.csproj" />
-    <ProjectReference Include="..\FilterArray\FilterArray.csproj" />
+    <ProjectReference Include="..\FilterArray.Palindrome\FilterArray2.csproj" />
+    <ProjectReference Include="..\FilterArray\FilterArray1.csproj">
+      <Aliases>destination</Aliases>
+    </ProjectReference>
   </ItemGroup>
 
 </Project>

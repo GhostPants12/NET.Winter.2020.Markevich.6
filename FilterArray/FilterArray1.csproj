@@ -21,8 +21,4 @@
     <AdditionalFiles Include="..\code-analysis.ruleset" Link="Properties\code-analisys.ruleset" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ArrayFilterExtension\ArrayFilterExtension.csproj" />
-  </ItemGroup>
-
 </Project>

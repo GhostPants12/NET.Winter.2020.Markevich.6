@@ -1,8 +1,8 @@
+extern alias destination;
 using NUnit.Framework;
 using System;
 using System.Linq;
-using static FilterArray.Palindrome.PalindromeArrayFilter;
-using static FilterArray.KeyArrayFilter;
+using destination::FilterArray;
 
 namespace ArrayExtension.Tests
 {
@@ -17,27 +17,27 @@ namespace ArrayExtension.Tests
         [TestCase(new[] { 15, 25, 60, 74, 189, int.MinValue, 32 }, 2, ExpectedResult = new[] { 25, int.MinValue, 32 })]
         public static int[] FilterArrayByKey_WithAllValidParameters(int[] arr, int key)
         {
-            return FilterArrayByKey(arr, key);
+            return destination::FilterArray.ArrayFilter.FilterByKey(arr, key);
         }
 
         [TestCase(new[] {101, 1551, 82028, 100, 1890, 1570}, ExpectedResult = new[] {101, 1551, 82028})]
         [TestCase(new[] {100, 200, 300, 400 }, ExpectedResult = new int[] { })]
         public static int[] FilterArrayByKey_WithAllValidParameters_Palindrome(int[] arr)
         {
-            return FilterArrayToPalindrome(arr);
+            return FilterArray.ArrayFilter.FilterArrayByKey(arr);
         }
         [Test]
         public static void FilterArrayByKey_WithEmptyArray()=>Assert.Throws<ArgumentException>(() 
-            => FilterArrayByKey(new int[0], 0));
+            => destination::FilterArray.ArrayFilter.FilterByKey(new int[0], 0));
         [Test]
         public static void FilterArrayByKey_WithNegativeKey() => Assert.Throws<ArgumentOutOfRangeException>(()
-              => FilterArrayByKey(new int[] { 1, 2 }, -1));
+              => destination::FilterArray.ArrayFilter.FilterByKey(new int[] { 1, 2 }, -1));
         [Test]
         public static void FilterArrayByKey_KeyMoreThan9() => Assert.Throws<ArgumentOutOfRangeException>(()
-              => FilterArrayByKey(new int[] { 1, 2 }, 100));
+              => destination::FilterArray.ArrayFilter.FilterByKey(new int[] { 1, 2 }, 100));
         [Test]
         public static void FilterArrayByKey_WithNullArray() => Assert.Throws<ArgumentNullException>(()
-              => FilterArrayByKey(null, 0));
+              => destination::FilterArray.ArrayFilter.FilterByKey(null, 0));
         //6 sec
         [Test]
         public static void FilterArrayByKey_WithAllValidParameters_BigArray_ForTwoMethods()
@@ -52,8 +52,8 @@ namespace ArrayExtension.Tests
                 arr[i] = 8;
             }
 
-            int[] result = FilterArrayToPalindrome(arr);
-            int[] resultForKey = FilterArrayByKey(arr, 8);
+            int[] result = FilterArray.ArrayFilter.FilterArrayByKey(arr);
+            int[] resultForKey = destination::FilterArray.ArrayFilter.FilterByKey(arr, 8);
             int[] expected = { 8, 8, 8, 8, 8 };
             Assert.AreEqual(expected, result);
             Assert.AreEqual(expected,resultForKey);
