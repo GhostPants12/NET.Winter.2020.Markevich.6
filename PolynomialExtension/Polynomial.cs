@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace PolynomialExtension
 {
-    public class Polynomial
+    public class Polynomial : ICloneable, IEquatable<Polynomial>
     {
         private readonly int maxPower;
         private readonly double[] multipliersArray;
@@ -22,7 +24,21 @@ namespace PolynomialExtension
             }
 
             this.maxPower = multipliers.Length - 1;
-            this.multipliersArray = multipliers;
+            this.multipliersArray = new double[multipliers.Length];
+            Array.Copy(multipliers, this.multipliersArray, multipliers.Length);
+        }
+
+        public double this[int index]
+        {
+            get
+            {
+                if (index >= 0 && index <= this.maxPower)
+                {
+                    return this.multipliersArray[index];
+                }
+
+                return 0;
+            }
         }
 
         /// <summary>Implements the operator +.</summary>
@@ -158,7 +174,17 @@ namespace PolynomialExtension
                 return false;
             }
 
-            return string.Equals(this.ToString(), obj.ToString(), StringComparison.InvariantCulture);
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (this.GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            return this.Equals(obj as Polynomial);
         }
 
         /// <summary>Returns a hash code for this instance.</summary>
@@ -228,5 +254,17 @@ namespace PolynomialExtension
 
             return stringRepresentation;
         }
+
+        public bool Equals(Polynomial other)
+        {
+            if (ReferenceEquals(other, null))
+            {
+                return false;
+            }
+
+            return string.Equals(this.ToString(), other.ToString(), StringComparison.InvariantCulture);
+        }
+
+        public object Clone() => this.MemberwiseClone();
     }
 }
