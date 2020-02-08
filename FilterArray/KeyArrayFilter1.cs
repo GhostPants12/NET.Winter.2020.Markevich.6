@@ -16,7 +16,7 @@ namespace FilterArray
         {
             if (arr == null)
             {
-                throw new ArgumentNullException("Array is null.");
+                throw new ArgumentNullException($"{nameof(arr)} is null.");
             }
 
             if (key < 0 || key > 9)
@@ -28,6 +28,7 @@ namespace FilterArray
             {
                 throw new ArgumentException("Array is empty");
             }
+
             int[] result = new int[arr.Length];
             int resultIndex = 0;
             AddElementsToArray(result, arr, key, ref resultIndex);

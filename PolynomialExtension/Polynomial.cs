@@ -10,6 +10,7 @@ namespace PolynomialExtension
 {
     public sealed class Polynomial : ICloneable, IEquatable<Polynomial>
     {
+        private static double epsilon = 0.00001;
         private readonly int maxPower;
         private readonly double[] multipliersArray;
 
@@ -28,6 +29,14 @@ namespace PolynomialExtension
             Array.Copy(multipliers, this.multipliersArray, multipliers.Length);
         }
 
+        /// <summary>Gets the maximum power.</summary>
+        /// <value>The maximum power.</value>
+        public int MaxPower => this.maxPower;
+
+        /// <summary>Gets the multipliersArray element at the specified index.</summary>
+        /// <param name="index">The index.</param>
+        /// <value>The mutipliersArray's element.</value>
+        /// <returns>The element in the multipliersArray at the specified index.</returns>
         public double this[int index]
         {
             get
@@ -47,14 +56,14 @@ namespace PolynomialExtension
         /// <returns>The result of the operation.</returns>
         public static Polynomial operator +(Polynomial ls, Polynomial rs)
         {
-            if (ls == null)
+            if (ls == null && rs != null)
             {
-                if (rs == null)
-                {
-                    return null;
-                }
-
                 return rs;
+            }
+
+            if (ls == null && rs == null)
+            {
+                return null;
             }
 
             if (rs == null)
@@ -141,13 +150,13 @@ namespace PolynomialExtension
         /// <returns>  Returns if two polynomials are equal.</returns>
         public static bool operator ==(Polynomial ls, Polynomial rs)
         {
+            if (ReferenceEquals(ls, null) && ReferenceEquals(rs, null))
+            {
+                return true;
+            }
+
             if (ReferenceEquals(ls, null))
             {
-                if (ReferenceEquals(rs, null))
-                {
-                    return true;
-                }
-
                 return false;
             }
 
@@ -191,7 +200,13 @@ namespace PolynomialExtension
         /// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
         public override int GetHashCode()
         {
-            return this.ToString().GetHashCode(StringComparison.InvariantCulture);
+            double hashBase = 0;
+            for (int i = 0; i < this.MaxPower; i++)
+            {
+                hashBase += this[i];
+            }
+
+            return hashBase.GetHashCode();
         }
 
         /// <summary>Converts to string.</summary>
@@ -262,7 +277,20 @@ namespace PolynomialExtension
                 return false;
             }
 
-            return string.Equals(this.ToString(), other.ToString(), StringComparison.InvariantCulture);
+            if (this.MaxPower == other.MaxPower)
+            {
+                for (int i = 0; i < this.MaxPower; i++)
+                {
+                    if ((this[i] - other[i]) > epsilon)
+                    {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+
+            return false;
         }
 
         public object Clone() => this.MemberwiseClone();

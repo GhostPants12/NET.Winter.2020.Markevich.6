@@ -9,12 +9,12 @@ namespace FilterArray
         /// <param name="arr">The array.</param>
         /// <returns>Returns an array containing only palindrome elements.</returns>
         /// <exception cref="ArgumentNullException">Array is null.</exception>
-        /// <exception cref="ArgumentException">Array is empty</exception>
+        /// <exception cref="ArgumentException">Array is empty.</exception>
         public static int[] FilterArrayByKey(int[] arr)
         {
             if (arr == null)
             {
-                throw new ArgumentNullException("Array is null.");
+                throw new ArgumentNullException($"{nameof(arr)} is null.");
             }
 
             if (arr.Length == 0)
